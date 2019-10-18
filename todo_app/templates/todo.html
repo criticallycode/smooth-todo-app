@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul>
+        {% for todo_item in all_items %}
+        <li>{{ todo_item.content }}</li>
+            <!-- HttP request to "/addTodo/ url -->
+                <form action="/deleteTodo/{{todo_item.id}}/" style="display: inline;" method="post">
+                   {% csrf_token %}
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Delete
+                        <i class="material-icons right"></i>
+                     </button>
+                </form>
+        {% endfor %}
+    </ul>
+
+    <!-- HttP request to "/addTodo/ url -->
+    <form action="/addTodo/" method="post">
+       {% csrf_token %}
+        <!-- Takes in text as input, saves it as content -->
+        <input type="text" name="content"/>
+        <!-- Submit type, adds value-->
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right"></i>
+        </button>
+    </form>
+{% endblock content %}

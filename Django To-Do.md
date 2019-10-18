@@ -1,0 +1,1 @@
+This repo is a very simple To-Do app. It allows the user to add items to the list and delete them at will.
